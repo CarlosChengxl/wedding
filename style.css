@@ -1,0 +1,181 @@
+/* 全局样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f3f3;
+    color: #5a3921;
+    line-height: 1.6;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/* 婚礼轮播样式 */
+.wedding-carousel {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 1s ease;
+    background: linear-gradient(135deg, rgba(255, 245, 245, 0.9), rgba(255, 230, 230, 0.85)),
+                url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0ibm9uZSIvPgogIDxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjEiIGZpbGw9IiNmNWQ4ZDAiLz4KICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjQ1IiByPSIxIiBmaWxsPSIjZjVkOGQwIi8+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI1NSIgcj0iMSIgZmlsbD0iI2Y1ZDhkMCIvPgogIDxjaXJjbGUgY3g9IjQ1IiBjeT0iNTAiIHI9IjEiIGZpbGw9IiNmNWQ4ZDAiLz4KICA8Y2lyY2xlIGN4PSI1NSIgY3k9IjUwIiByPSIxIiBmaWxsPSIjZjVkOGQwIi8+Cjwvc3ZnPg==');
+}
+
+/* 浪漫背景效果增强 */
+.wedding-carousel::before, .wedding-carousel::after {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.1;
+}
+
+.wedding-carousel::before {
+    top: -100px;
+    left: -100px;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBkPSJNNTAsMCBDNzUsMjUsMTAwLDUwLDc1LDc1IEM1MCwxMDAsMjUsNzUsMCw1MCBDMjUsMjUsNTAsMCw1MCwwIFoiIGZpbGw9IiNmNWQ4ZDAiLz48L3N2Zz4=');
+    animation: float 15s ease-in-out infinite;
+}
+
+.wedding-carousel::after {
+    bottom: -100px;
+    right: -100px;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBkPSJNNTAsMCBDNzUsMjUsMTAwLDUwLDc1LDc1IEM1MCwxMDAsMjUsNzUsMCw1MCBDMjUsMjUsNTAsMCw1MCwwIFoiIGZpbGw9IiNmNWQ4ZDAiLz48L3N2Zz4=');
+    animation: float 18s ease-in-out infinite reverse;
+}
+
+/* 轮播容器 */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* 轮播幻灯片容器 */
+.carousel-slides {
+    display: flex;
+    height: 100vh;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%;
+}
+
+/* 单个幻灯片 */
+.carousel-slide {
+    flex: 0 0 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* 幻灯片图片 - 设置为100%屏幕占比 */
+.carousel-slide img {
+    max-width: 100%;
+    max-height: 100vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s ease;
+}
+
+/* 图片悬停效果 */
+.carousel-slide img:hover {
+    transform: scale(1.01);
+}
+
+/* 花瓣效果容器 */
+#petals-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 100;
+    overflow: hidden;
+}
+
+/* 花瓣样式 */
+.petal {
+    position: absolute;
+    top: -20px;
+    width: 10px;
+    height: 10px;
+    background-color: #ffcccb;
+    border-radius: 150% 0 150% 0;
+    animation: falling linear infinite;
+    transform-origin: center;
+    opacity: 0.8;
+}
+
+/* 动画效果 */
+@keyframes falling {
+    0% {
+        top: -20px;
+        transform: rotate(0deg) translateX(0);
+        opacity: 0.8;
+    }
+    100% {
+        top: 100vh;
+        transform: rotate(360deg) translateX(100px);
+        opacity: 0;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(10px, 10px) rotate(5deg);
+    }
+    50% {
+        transform: translate(0, 20px) rotate(0deg);
+    }
+    75% {
+        transform: translate(-10px, 10px) rotate(-5deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .carousel-slide img {
+        max-width: 100%;
+        max-height: 100vh;
+    }
+}
